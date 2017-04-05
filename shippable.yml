@@ -32,7 +32,6 @@ build:
     - docker build -t $DOCKER_ACC/$DOCKER_REPO:latest .
 
   post_ci:
-    - docker tag -f $DOCKER_REPO:latest $DOCKER_ACC/$DOCKER_REPO:latest
     - docker push $DOCKER_ACC/$DOCKER_REPO:latest
 
   on_success:
