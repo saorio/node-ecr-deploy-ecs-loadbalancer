@@ -18,7 +18,7 @@ env:
     - DOCKER_REPO=node-ecr-deploy-ecs-loadbalancer
     - DOCKER_ACC=393024300663.dkr.ecr.ap-northeast-1.amazonaws.com # replace with your ECR URL
     - ECR_REGION=ap-northeast-1
-    - AWS_ACCOOUNT_ID=393024300663
+    - AWS_ACCOUNT_ID=393024300663
 
 build:
   ci:
@@ -34,7 +34,7 @@ build:
 
 
   post_ci:
-    - $(aws ecr get-login --region $ECR_REGION --registory-ids $AWS_ACCOOUNT_ID)
+    - $(aws ecr get-login --region $ECR_REGION --registry-ids $AWS_ACCOUNT_ID)
     - docker build -t $DOCKER_ACC/$DOCKER_REPO:latst .
     - docker tag $DOCKER_REPO:latest $DOCKER_ACC/$DOCKER_REPO:latest
     - docker push $DOCKER_ACC/$DOCKER_REPO:latest
