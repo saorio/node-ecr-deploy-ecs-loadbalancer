@@ -29,10 +29,10 @@ build:
     - $MOD_LOC/istanbul --include-all-sources cover -root "$SHIPPABLE_REPO_DIR/routes" $SHIPPABLE_REPO_DIR/node_modules/mocha/bin/_mocha -- -R spec-xunit-file --recursive "$TESTS_LOC_DIR/**/*.spec.js"
     - $MOD_LOC/istanbul report cobertura --dir $CODE_COVERAGE_DIR
     - popd
-    - docker build -t $DOCKER_ACC/$DOCKER_REPO:latest .
+
 
   post_ci:
-    - docker tag $DOCKER_REPO:latest $DOCKER_ACC/$DOCKER_REPO:latest
+    - docker build -t $DOCKER_ACC/$DOCKER_REPO:latst .
     - docker push $DOCKER_ACC/$DOCKER_REPO:latest
 
   on_success:
