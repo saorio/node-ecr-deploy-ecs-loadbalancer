@@ -16,7 +16,7 @@ env:
     - TESTS_LOC_DIR=$SHIPPABLE_REPO_DIR/tests
     - MOD_LOC=$SHIPPABLE_REPO_DIR/node_modules/.bin/
     - DOCKER_REPO=node-ecr-deploy-ecs-loadbalancer
-    - DOCKER_ACC=288971733297.dkr.ecr.us-east-1.amazonaws.com # replace with your ECR URL
+    - DOCKER_ACC=393024300663.dkr.ecr.ap-northeast-1.amazonaws.com # replace with your ECR URL
 
 build:
   ci:
