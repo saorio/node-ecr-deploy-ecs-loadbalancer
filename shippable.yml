@@ -35,9 +35,9 @@ build:
 
   post_ci:
     - $(aws ecr get-login --region $ECR_REGION --registry-ids $AWS_ACCOUNT_ID)
-    - docker build -t $DOCKER_ACC/$DOCKER_REPO:latest .
-    - docker tag $DOCKER_REPO:latest $DOCKER_ACC/$DOCKER_REPO:latest .
-    - docker push $DOCKER_ACC/$DOCKER_REPO:latest .
+    - docker build -t $DOCKER_REPO:latest .
+    - docker tag $DOCKER_REPO:latest $DOCKER_ACC/$DOCKER_REPO:latest
+    - docker push $DOCKER_ACC/$DOCKER_REPO:latest
 
   on_success:
     # save the new image state for use later in the pipeline
