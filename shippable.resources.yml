@@ -9,11 +9,11 @@ resources:
 # add env - AWS cluster
   - name: shipdemo-cluster-ecs
     type: cluster
-    integration: ttrahan-aws # replace with your AWS integration name
+    integration: fuji-aws # replace with your AWS integration name
     pointer:
       # replace with your Amazon ECS cluster name and region
       sourceName : "demo-shippable-ecs-test"
-      region: "us-east-1"
+      region: "ap-northeast-1"
 
 # add AWS ALB target group for TEST
   - name: shipdemo-alb-test     #required
@@ -24,11 +24,11 @@ resources:
       method: application
 
 # add AWS ALB target group for PROD
-  - name: shipdemo-alb-prod     #required
+  - name: shipdemo-alb-dev     #required
     type: loadBalancer      #required
     pointer:
       # replace with the ARN for your Amazon EC/2 Application Load Balancer Target Group
-      sourceName: "arn:aws:elasticloadbalancing:us-east-1:288971733297:targetgroup/demoWeb/29435cb0f31ac400"
+      sourceName: "arn:aws:elasticloadbalancing:ap-northeast-1:393024300663:loadbalancer/app/shipdemo-alb-dev/5a1af5809f25000b"
       method: application
 
 ################################
@@ -36,13 +36,13 @@ resources:
 # Docker Image
   - name: shipdemo-img-ecs
     type: image
-    integration: ttrahan-ecr # replace with your Amazon ECR integration name
+    integration: fuji-aws # replace with your Amazon ECR integration name
     pointer:
       # replace with your Amazon ECR URL
-      sourceName: "288971733297.dkr.ecr.us-east-1.amazonaws.com/node-ecr-deploy-ecs-loadbalancer" 
+      sourceName: "393024300663.dkr.ecr.ap-northeast-1.amazonaws.com/node-ecr-deploy-ecs-loadbalancer" 
       isPull: false
     seed:
-      versionName: master.1
+      versionName: latest
     flags:
       - amazon-ecr-ecs-loadbalancer
 
@@ -57,7 +57,7 @@ resources:
       memory: 64
       cpuShares: 128
       portMappings:
-        - 0:80
+        - 0:443
       labels:   
         app: shipdemo-node-ecr-deploy-ecs-loadbalancer
         env: test
@@ -70,7 +70,7 @@ resources:
     version:
       params:
         ENVIRONMENT: "TEST"
-        PORT: 80
+        PORT: 443
     flags:
       - amazon-ecr-ecs-loadbalancer
 
@@ -95,7 +95,7 @@ resources:
       memory: 64
       cpuShares: 128
       portMappings:
-        - 0:80
+        - 0:443
       labels: 
         app: shipdemo-node-ecr-deploy-ecs-loadbalancer
         env: prod
@@ -108,7 +108,7 @@ resources:
     version:
       params:
         ENVIRONMENT: "PROD"
-        PORT: 80
+        PORT: 443
     flags:
       - amazon-ecr-ecs-loadbalancer
 

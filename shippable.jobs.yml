@@ -33,7 +33,7 @@ jobs:
         applyTo:
           - manifest: shipdemo-manifest-ecs
             image: shipdemo-img-ecs
-            port: 80
+            port: 443
       - TASK: managed
     flags:
       - amazon-ecr-ecs-loadbalancer
@@ -52,7 +52,7 @@ jobs:
         applyTo:
           - manifest: shipdemo-manifest-ecs
             image: shipdemo-img-ecs
-            port: 80
+            port: 443
       - TASK: managed
     flags:
       - amazon-ecr-ecs-loadbalancer
