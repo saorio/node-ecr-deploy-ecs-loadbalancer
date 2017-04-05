@@ -20,7 +20,7 @@ resources:
     type: loadBalancer      #required
     pointer:
       # replace with the ARN for your Amazon EC/2 Application Load Balancer Target Group
-      sourceName: "arn:aws:elasticloadbalancing:us-east-1:288971733297:targetgroup/demoWebTest/56a74253de7101ee"
+      sourceName: "arn:aws:elasticloadbalancing:ap-northeast-1:393024300663:loadbalancer/app/shipdemo-alb-dev/5a1af5809f25000b"
       method: application
 
 # add AWS ALB target group for PROD
