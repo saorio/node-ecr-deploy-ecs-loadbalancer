@@ -9,7 +9,7 @@ resources:
 # add env - AWS cluster
   - name: shipdemo-cluster-ecs
     type: cluster
-    integration: fuji-aws # replace with your AWS integration name
+    integration: ecr-fuji # replace with your AWS integration name
     pointer:
       # replace with your Amazon ECS cluster name and region
       sourceName : "demo-shippable-ecs-test"
@@ -36,7 +36,7 @@ resources:
 # Docker Image
   - name: shipdemo-img-ecs
     type: image
-    integration: fuji-aws # replace with your Amazon ECR integration name
+    integration: ecr-fuji # replace with your Amazon ECR integration name
     pointer:
       # replace with your Amazon ECR URL
       sourceName: "393024300663.dkr.ecr.ap-northeast-1.amazonaws.com/node-ecr-deploy-ecs-loadbalancer" 

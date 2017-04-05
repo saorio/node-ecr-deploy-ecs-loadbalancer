@@ -49,7 +49,7 @@ integrations:
 # adding docker hub integration so that credentials are available to CI Job
 # http://docs.shippable.com/integrations/imageRegistries/dockerHub/
   hub:
-    - integrationName: fuji-aws # replace with your Amazon ECR integration name
+    - integrationName: ecr-fuji # replace with your Amazon ECR integration name
       type: ecr
 
   # http://docs.shippable.com/ci/shippableyml/#notifications
