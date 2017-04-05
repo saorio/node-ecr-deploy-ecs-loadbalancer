@@ -34,7 +34,7 @@ build:
 
 
   post_ci:
-    - $(aws ecr get-login --region $ECR_REGION --registory-id $AWS_ACCOOUNT_ID)
+    - $(aws ecr get-login --region $ECR_REGION --registory-ids $AWS_ACCOOUNT_ID)
     - docker build -t $DOCKER_ACC/$DOCKER_REPO:latst .
     - docker tag $DOCKER_REPO:latest $DOCKER_ACC/$DOCKER_REPO:latest
     - docker push $DOCKER_ACC/$DOCKER_REPO:latest
